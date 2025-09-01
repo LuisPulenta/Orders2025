@@ -1,5 +1,9 @@
 using Backend.Data;
+using Backend.Repositories.Implementations;
+using Backend.Repositories.Interfaces;
+using Backend.UnitsOfWork.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Orders.Backend.UnitsOfWork.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=DefaultConnection"));
+builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
 
