@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Shared.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Entities;
 
-public class Category
+public class Category : IEntityWithName
 {
     public int Id { get; set; }
 
