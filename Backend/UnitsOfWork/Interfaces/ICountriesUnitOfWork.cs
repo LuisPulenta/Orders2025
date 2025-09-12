@@ -1,4 +1,5 @@
-﻿using Shared.Entities;
+﻿using Shared.DTOs;
+using Shared.Entities;
 using Shared.Responses;
 
 namespace Backend.UnitsOfWork.Interfaces
@@ -8,5 +9,7 @@ namespace Backend.UnitsOfWork.Interfaces
         Task<ActionResponse<Country>> GetAsync(int id);
 
         Task<ActionResponse<IEnumerable<Country>>> GetAsync();
+
+        Task<ActionResponse<IEnumerable<Country>>> GetAsync(PaginationDTO pagination);
     }
 }
